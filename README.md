@@ -28,23 +28,17 @@ To install the **DriversLic** script, follow these steps:
 2. **Add to Your Server Resources**  
    Place the `DriversLic` folder into your server's resources directory.
 
-3. **Set Up your Community ID convar**  
-   All Imperial Scripts rely on a `community ID` to function. To set this up:
-
+3. **Community Configuration**  
+   The script requires a `community ID` and `API Secret Key` from *Imperial CAD*. If not already set, follow these instructions:
    - Locate your community ID in *Admin Panel > Customization > Community ID*.
-   - Add the following line at the top of your `server.cfg` file:
+   - Add the following lines to your `server.cfg` file:
      ```plaintext
      setr imperial_community_id "COMMUNITY_ID_HERE"
+     setr imperialAPI "API_Secret_Key_HERE"
      ```
-   - **Note**: If you've already set this up for another *Imperial CAD* plugin, you can skip this step. Without this configuration, your Imperial Scripts will return an error in the console.
+   - If your server already uses other *Imperial* scripts with this same configuration, you can skip this step.
 
-4. **Ensure Resources in `server.cfg`**  
-   Add the following line to your `server.cfg` to ensure the *DriversLic* script loads correctly:
-   ```plaintext
-   ensure DriversLic
-   ```
-
-5. **Restart Your Server**  
+4. **Restart Your Server**  
    Restart your server to apply the changes.
 
 ---

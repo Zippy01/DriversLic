@@ -34,7 +34,7 @@ To install the **DriversLic** script, follow these steps:
    - Add the following lines to your `server.cfg` file:
      ```plaintext
      setr imperial_community_id "COMMUNITY_ID_HERE"
-     setr imperialAPI "API_Secret_Key_HERE"
+     set imperialAPI "API_Secret_Key_HERE"
      ```
    - If your server already uses other *Imperial* scripts with this same configuration, you can skip this step.
 

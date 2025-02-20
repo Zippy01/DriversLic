@@ -3,10 +3,10 @@ local ssn = GetResourceKvpString("civ_ssn")
 
 if not commId or commId == "" then
     error("Could not load 'imperial_community_id' convar.") 
-end
+    return end
 
 RegisterCommand("id", function(source)
-    local ssn = exports["CivilianInt"]:GetStoredSSN() 
+    local ssn = exports["ImperialCAD"]:GetStoredSSN() 
     if not ssn or ssn == "nil" then
         TriggerEvent("chat:addMessage", {
             color = {255, 0, 0},
@@ -15,7 +15,7 @@ RegisterCommand("id", function(source)
         })
         return
     end
-    TriggerServerEvent("fetchDriverLicenseData", ssn)
+    TriggerServerEvent("fetchDriverLicenseData", ssn, GetPlayerServerId(PlayerId()))
 end, false)
 
 
@@ -25,7 +25,7 @@ end, false)
 
 
 RegisterCommand("giveid", function(source, args)
-    local ssn = exports["CivilianInt"]:GetStoredSSN() 
+    local ssn = exports["ImperialCAD"]:GetStoredSSN() 
     if not ssn or ssn == "nil" then
         TriggerEvent("chat:addMessage", {
             color = {255, 0, 0},
@@ -37,7 +37,7 @@ RegisterCommand("giveid", function(source, args)
 
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
-    local nearestPlayer, nearestDistance = nil, 10.0 
+    local nearestPlayer, nearestDistance = nil, 5.0
     for _, playerId in ipairs(GetActivePlayers()) do
         local targetPed = GetPlayerPed(playerId)
         if targetPed ~= playerPed then
@@ -51,17 +51,16 @@ RegisterCommand("giveid", function(source, args)
     end
 
     if nearestPlayer then
-        TriggerServerEvent("giveDriverLicenseData", ssn, nearestPlayer)
+        TriggerServerEvent("giveDriverLicenseData", ssn, nearestPlayer, GetPlayerServerId(PlayerId()))
     else
         TriggerEvent("chat:addMessage", { args = { "^1Error", "No player nearby to give ID." } })
     end
 end, false)
 
 
-
 RegisterNetEvent("showDriverLicense")
-AddEventHandler("showDriverLicense", function(data)
-    local playerServerId = GetPlayerServerId(PlayerId())  
+AddEventHandler("showDriverLicense", function(data, source, id)
+    local playerServerId = source
 
     SendNUIMessage({
         action = "show",

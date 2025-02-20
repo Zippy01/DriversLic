@@ -30,7 +30,7 @@ AddEventHandler("fetchDriverLicenseData", function(ssn, playerId)
         return
     end
 
-    local url = "https://imperialcad.app/version-test/api/1.1/wf/getLicenseData"
+    local url = "https://imperialcad.app/api/1.1/wf/getLicenseData"
 
     local data = {
         ssn = ssn,
@@ -88,7 +88,7 @@ AddEventHandler("giveDriverLicenseData", function(ssn, nearestPlayer, sourcePlay
         return
     end
 
-    local url = "https://imperialcad.app/version-test/api/1.1/wf/getLicenseData"
+    local url = "https://imperialcad.app/api/1.1/wf/getLicenseData"
 
     local data = {
         ssn = ssn,

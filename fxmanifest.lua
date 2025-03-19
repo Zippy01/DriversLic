@@ -8,7 +8,6 @@ version '1.5.0'
 client_script 'client.lua'
 server_script 'server.lua'
 
-
 dependency 'ImperialCAD'
 
 ui_page 'html/index.html'

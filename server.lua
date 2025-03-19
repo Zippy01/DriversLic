@@ -59,7 +59,7 @@ end)
 RegisterNetEvent("giveDriverLicenseData")
 AddEventHandler("giveDriverLicenseData", function(ssn, nearestPlayer, sourcePlayerId)
     local src = source
-    local playerServerId = GetPlayerServerId(src)
+    local playerServerId = GetPlayerServerId
 
     local headers = {
         ["Content-Type"] = "application/json",
